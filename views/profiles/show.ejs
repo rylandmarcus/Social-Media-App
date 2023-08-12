@@ -1,11 +1,15 @@
 
 <h1>profiles show</h1>
-<object data="<%= profile.coverPhoto %>" type="image/jpg">
-    <img src="https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg" alt="alt">
-</object>
-<object data="<%= profile.profPic %>" type="image/jpg">
-    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="alt">
-</object> 
+<% if (hasCoverPhoto) { %>
+    <img src="<%= profile.coverPhoto %>" alt="coverphoto" class="coverPhoto">
+<% }else{%>
+    <img src="https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg" alt="coverphoto" class="coverPhoto">
+<%}%>
+<% if (hasProfPic) { %>
+    <img src="<%= profile.profPic %>" alt="profpic" class="profPic">
+<%}else{%>
+    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profpic" class="profPic">
+<%}%>
 <h2>
     <%= profile.firstName %> <%= profile.lastName %>
 </h2>

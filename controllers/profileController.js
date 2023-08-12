@@ -32,15 +32,15 @@ router.get('/seed', async (req, res)=>{
             author: users[2]._id
         },
         {
-            profPic: 'string',
-            coverPhoto: 'string',
+            profPic: '',
+            coverPhoto: '',
             firstName: 'd first',
             lastName: 'd last',
             author: users[3]._id
         },
         {
-            profPic: 'string',
-            coverPhoto: 'string',
+            profPic: '',
+            coverPhoto: '',
             firstName: 'f first',
             lastName: 'f last',
             author: users[4]._id
@@ -93,11 +93,24 @@ router.get('/:id', async (req, res)=>{
     } else{
         myProf=false
     }
-    console.log(posts);
+    let hasProfPic
+    let hasCoverPhoto
+    if (profile.profPic){
+        hasProfPic=true
+    } else {
+        hasProfPic=false
+    }
+    if (profile.coverPhoto){
+        hasCoverPhoto=true
+    } else {
+        hasCoverPhoto=false
+    }
     res.render('profiles/show.ejs', {
         profile: profile,
         posts: posts,
-        myProf: myProf
+        myProf: myProf,
+        hasProfPic: hasProfPic,
+        hasCoverPhoto: hasCoverPhoto
     })
 })
 
