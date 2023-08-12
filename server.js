@@ -33,13 +33,13 @@ app.use(express.static('public'))
 app.use(authController)
 
 //AFTER HERE MUST BE SIGNED IN
-// app.use((req, res, next)=>{
-//     if (!req.session.userid) {
-//         res.send('please log in: <a href="/login">Log In</a>')
-//         return
-//     }
-//     next()
-// })
+app.use((req, res, next)=>{
+    if (!req.session.userid) {
+        res.send('please log in: <a href="/login">Log In</a>')
+        return
+    }
+    next()
+})
 
 //Routes Once Logged In
 app.use('/posts', postController)

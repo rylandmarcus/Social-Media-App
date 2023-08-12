@@ -68,11 +68,11 @@ router.get('/seed', async (req, res)=>{
 router.get('/', async (req, res)=>{
     let posts = await Post.find({})
     let profiles = await Profile.find({})
-    // res.render('posts/index.ejs', {
-    //     posts: posts,
-    //     profiles: profiles
-    // })
-    res.send(posts)
+    res.render('posts/index.ejs', {
+        posts: posts,
+        profiles: profiles
+    })
+    // res.send(posts)
     // res.send('posts!')
 })
 
@@ -98,16 +98,16 @@ router.post('/', async (req, res)=>{
 //SHOW
 router.get('/:id', async (req, res)=>{
     let post = await Post.findById(req.params.id)
-    let profiles = await Profile.find({})
-    let author = profiles.find((prof)=>{
-        return prof.author==post.author
-    })
-    console.log(profiles);
-    console.log(author);
+    let profile = await Profile.findOne({author: post.author})
+    // let profile = profiles.find((prof)=>{
+    //     return prof.author==post.author
+    // })
+    // console.log(profiles);
+    // console.log(profile);
     // let author = await User.findById(post.author)
     res.render('posts/show.ejs', {
         post: post,
-        author: author.firstName
+        profile: profile
     })
 })
 

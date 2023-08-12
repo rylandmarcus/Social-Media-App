@@ -1,6 +1,21 @@
 <h1>Posts!</h1>
-
-<% posts.forEach(post=>{ %>
-    <%= let writer = profiles.find(prof=>{return prof.author==post.author}) %>
-    <h2><%= writer.firstName %>: <%= post.body %></h2>
-<% }) %>
+<div class="postsdiv">
+    <% posts.forEach(post=>{ %>
+            <% let writer = profiles.find(prof=>{
+                return prof.author.toHexString()==post.author
+            }) %>
+            <div class="postcontainer">
+                <p class="profheader">
+                    <a href="/profiles/<%=writer._id%>">
+                        <%= writer.firstName %> <%= writer.lastName%>
+                    </a>
+                    :
+                </p>
+                <a href="/posts/<%=post._id%>">
+                    <div class="post">
+                        <p><%= post.body %></p>
+                    </div>
+                </a>
+            </div>
+    <% }) %>
+</div>
