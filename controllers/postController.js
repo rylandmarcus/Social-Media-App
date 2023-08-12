@@ -15,32 +15,32 @@ router.get('/seed', async (req, res)=>{
     users = users.sort((a,b)=>a.username.localeCompare(b.username))
     const starterPosts = [
         {
-            body: 'a stuff and things Im',
+            body: 'Its a me!!',
             likes: 1,
             author: users[0]._id
         },
         {
-            body: 'a sasdfasdgs Im',
+            body: 'wahooo',
             likes: 2,
             author: users[0]._id
         },
         {
-            body: 'a sboop bop Im',
+            body: 'waaaaaaaa',
             likes: 6,
             author: users[0]._id
         },
         {
-            body: 'b  Im',
+            body: 'Im Batman',
             likes: 69,
             author: users[1]._id
         },
         {
-            body: 'b sshooooop Im',
+            body: 'boom',
             likes: 12,
             author: users[1]._id
         },
         {
-            body: 'c is me',
+            body: 'I am Robiiiiin',
             likes: 4,
             author: users[2]._id
         },

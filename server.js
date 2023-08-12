@@ -17,7 +17,7 @@ const profileController = require('./controllers/profileController.js')
 const Profile = require('./models/profile.js')
 
 //MIDDLEWARE
-app.use(session({secret: secret, cookie:{maxAge: 60000}})) 
+app.use(session({secret: secret})) 
 //dont forget to move the secret to env
 //also, how long do you want session to last
 //3600000 is an hour

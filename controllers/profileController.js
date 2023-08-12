@@ -11,36 +11,36 @@ router.get('/seed', async (req, res)=>{
     users = users.sort((a,b)=>a.username.localeCompare(b.username))
     const starterProfiles = [
         {
-            profPic: 'String',
-            coverPhoto: 'String',
-            firstName: 'a first',
-            lastName: 'a last',
+            profPic: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/MarioNSMBUDeluxe.png/220px-MarioNSMBUDeluxe.png',
+            coverPhoto: 'https://images2.alphacoders.com/103/thumbbig-10370.webp',
+            firstName: 'Mario',
+            lastName: 'Bro',
             author: users[0]._id
         },
         {
-            profPic: 'String',
-            coverPhoto: 'String',
-            firstName: 'b first',
-            lastName: 'b last',
+            profPic: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2017_23/2033316/170610-crop-adam-west-batman-3-ew-1156a.jpg',
+            coverPhoto: 'https://www.lego.com/cdn/cs/set/assets/blt72f320324040a35c/Batman.png',
+            firstName: 'Bat',
+            lastName: 'Man',
             author: users[1]._id
         },
         {
-            profPic: 'String',
-            coverPhoto: 'String',
+            profPic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdsUeRSB1K2KbD5v2lUh6USSDwG0e4fzL_uQ&usqp=CAU',
+            coverPhoto: 'https://www.nicepng.com/png/detail/221-2218106_tumblr-superman-logo-robin-superhero-logo-logo-super.png',
             firstName: 'c first',
             lastName: 'c last',
             author: users[2]._id
         },
         {
-            profPic: 'String',
-            coverPhoto: 'String',
+            profPic: 'string',
+            coverPhoto: 'string',
             firstName: 'd first',
             lastName: 'd last',
             author: users[3]._id
         },
         {
-            profPic: 'String',
-            coverPhoto: 'String',
+            profPic: 'string',
+            coverPhoto: 'string',
             firstName: 'f first',
             lastName: 'f last',
             author: users[4]._id
