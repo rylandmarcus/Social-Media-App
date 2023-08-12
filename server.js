@@ -13,6 +13,8 @@ const User = require('./models/user.js')
 const Post = require('./models/post.js')
 const postController = require('./controllers/postController.js')
 const authController = require('./controllers/authController.js')
+const profileController = require('./controllers/profileController.js')
+const Profile = require('./models/profile.js')
 
 //MIDDLEWARE
 app.use(session({secret: secret, cookie:{maxAge: 60000}})) 
@@ -41,13 +43,19 @@ app.use(authController)
 
 //Routes Once Logged In
 app.use('/posts', postController)
+app.use('/profiles', profileController)
 
 app.get('/site', async (req, res)=>{
     console.log(req.session.userid);
     let username = await User.findOne({_id: req.session.userid})
     console.log(username);
     console.log(username.username);
-    res.send(`welcome to the site ${username.username} <a href="/logout">Log out</a>`)
+    let exists = await Profile.exists({author: req.session.userid})
+    if (exists){
+        res.redirect('/profiles')
+    } else {
+        res.redirect('/profiles/new')
+    }
 })
 
 //Server Listener

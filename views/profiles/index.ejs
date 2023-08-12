@@ -1,0 +1,6 @@
+<h1>profiles index</h1>
+<a href="/logout">Log out</a>
+<a href="/profiles/<%= myProfile._id %>">my profile</a>
+<% profiles.forEach(prof=>{ %>
+    <p><a href="profiles/<%= prof._id %>"><%= prof.firstName %> <%= prof.lastName %></a></p>
+<% }) %>
