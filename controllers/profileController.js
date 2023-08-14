@@ -32,15 +32,15 @@ router.get('/seed', async (req, res)=>{
             author: users[2]._id
         },
         {
-            profPic: '',
-            coverPhoto: '',
+            profPic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+            coverPhoto: 'https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg',
             firstName: 'd first',
             lastName: 'd last',
             author: users[3]._id
         },
         {
-            profPic: '',
-            coverPhoto: '',
+            profPic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+            coverPhoto: 'https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg',
             firstName: 'f first',
             lastName: 'f last',
             author: users[4]._id
@@ -73,6 +73,12 @@ router.get('/new', (req, res)=>{
 router.post('/', async (req, res)=>{
     // req.body.author = await User.findById(req.session.id)
     let author = req.session.userid
+    if (!req.body.profPic){
+        req.body.profPic="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    }
+    if (!req.body.coverPhoto){
+        req.body.coverPhoto="https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg"
+    } 
     let newProfile = req.body
     newProfile.author = author
     console.log(req.body);
@@ -93,24 +99,10 @@ router.get('/:id', async (req, res)=>{
     } else{
         myProf=false
     }
-    let hasProfPic
-    let hasCoverPhoto
-    if (profile.profPic){
-        hasProfPic=true
-    } else {
-        hasProfPic=false
-    }
-    if (profile.coverPhoto){
-        hasCoverPhoto=true
-    } else {
-        hasCoverPhoto=false
-    }
     res.render('profiles/show.ejs', {
         profile: profile,
         posts: posts,
-        myProf: myProf,
-        hasProfPic: hasProfPic,
-        hasCoverPhoto: hasCoverPhoto
+        myProf: myProf
     })
 })
 

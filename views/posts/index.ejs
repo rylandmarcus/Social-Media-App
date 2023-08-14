@@ -1,19 +1,20 @@
-<h1>Posts!</h1>
+<h1>Welcome to Your Newsfeed</h1>
+<a href="/profiles">To Profiles</a>
 <div class="postsdiv">
-    <% posts.forEach(post=>{ %>
+    <% posts.reverse().forEach(post=>{ %>
             <% let writer = profiles.find(prof=>{
                 return prof.author.toHexString()==post.author
             }) %>
             <div class="postcontainer">
                 <p class="profheader">
                     <a href="/profiles/<%=writer._id%>">
-                        <%= writer.firstName %> <%= writer.lastName%>
+                        <img class="postProfPic" src="<%=writer.profPic%>" alt="<%= writer.firstName %> <%= writer.lastName%>"><%= writer.firstName %> <%= writer.lastName%>
                     </a>
                     :
                 </p>
-                <a href="/posts/<%=post._id%>">
+                <a href="/posts/<%=post._id%>" class="postLink">
                     <div class="post">
-                        <p><%= post.body %></p>
+                        <p class="postBody"><%= post.body %></p>
                     </div>
                 </a>
             </div>

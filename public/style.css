@@ -1,6 +1,7 @@
-/* body{
-    background-color: green;
-} */
+body{
+    max-width: 1000px;
+    margin: auto;
+}
 
 .post {
     background-color: aliceblue;
@@ -29,7 +30,9 @@
 .postcontainer{
     border: black 2px solid;
     background-color: aliceblue;
-    margin: 10px
+    margin: 10px;
+    box-shadow: 3px 3px grey;
+    border-radius: 8px;
 }
 
 .profPic{
@@ -37,7 +40,59 @@
     height: 100px;
 }
 
+
+
+.postProfPic{
+    height: 50px;
+    width: 50px;
+}
+
+.postBody{
+    text-decoration: none;
+    color: black;
+}
+
+.postLink{
+    text-decoration: none;
+}
+
+
+
+/* Profile Show Page */
 .coverPhoto{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+}
+
+.roundProfPic {
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 150px;
+    height: 150px;
+}
+
+.profShowHeader {
+    background-color: green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    margin: 0px;
+}
+
+.profName {
+    margin: 10px;
+    font-size: 50px;
+}
+
+.profShowPost{
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 600px;
+}
+
+.profShowPostLink {
+    color: black;
+    text-decoration: none;
 }

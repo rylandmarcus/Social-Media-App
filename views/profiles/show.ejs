@@ -1,29 +1,27 @@
 
-<h1>profiles show</h1>
-<% if (hasCoverPhoto) { %>
-    <img src="<%= profile.coverPhoto %>" alt="coverphoto" class="coverPhoto">
-<% }else{%>
-    <img src="https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg" alt="coverphoto" class="coverPhoto">
-<%}%>
-<% if (hasProfPic) { %>
-    <img src="<%= profile.profPic %>" alt="profpic" class="profPic">
-<%}else{%>
-    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="profpic" class="profPic">
-<%}%>
-<h2>
-    <%= profile.firstName %> <%= profile.lastName %>
-</h2>
+<img class="coverPhoto" src="<%= profile.coverPhoto %>" alt="coverphoto">
+<div class="profShowHeader">
+    <img class="roundProfPic" src="<%= profile.profPic %>" alt="profpic">
+    <h2 class="profName">
+        <%= profile.firstName %> <%= profile.lastName %>
+    </h2>
+</div>
 
 <% if (myProf){ %>
-    <a href="/posts/new">make a new post</a>
+    <a href="/posts/new" class="newPostLink"><button>New Post</button></a>
 <% } %>
 
 <a href="/profiles">Back to Profiles</a>
 <a href="/posts">Back to Newsfeed</a>
-
+<br>
+<% if(posts.length==0){ %>
+    <p>You have no posts</p>
+    <% } %>
 <% posts.forEach(post=>{ %>
-    <a href="/posts/<%= post._id %>">
-        <p><%= post.body %></p>
-    </a>
+    <div class="profShowPost">
+        <a href="/posts/<%= post._id %>" class="profShowPostLink">
+            <p><%= post.body %></p>
+        </a>
+    </div>
 <% }) %>
 

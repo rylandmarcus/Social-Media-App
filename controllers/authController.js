@@ -60,7 +60,7 @@ router.post('/login', async (req, res)=>{
     bcrypt.compare(password, user.password).then(result=>{
         if (result){
             req.session.userid = user._id
-            res.redirect('/profiles')
+            res.redirect('/posts')
         } else{
             res.redirect('/login')
         }

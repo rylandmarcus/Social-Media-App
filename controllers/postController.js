@@ -66,12 +66,17 @@ router.get('/seed', async (req, res)=>{
 
 //INDEX
 router.get('/', async (req, res)=>{
-    let posts = await Post.find({})
-    let profiles = await Profile.find({})
-    res.render('posts/index.ejs', {
-        posts: posts,
-        profiles: profiles
-    })
+    let exists = await Profile.exists({author: req.session.userid})
+    if (exists){
+        let posts = await Post.find({})
+        let profiles = await Profile.find({})
+        res.render('posts/index.ejs', {
+            posts: posts,
+            profiles: profiles
+        })
+    } else {
+        res.redirect('/profiles/new')
+    }
     // res.send(posts)
     // res.send('posts!')
 })

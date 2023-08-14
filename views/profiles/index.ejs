@@ -3,5 +3,5 @@
 <a href="/profiles/<%= myProfile._id %>">my profile</a>
 <a href="/posts">posts</a>
 <% profiles.forEach(prof=>{ %>
-    <p><a href="profiles/<%= prof._id %>"><%= prof.firstName %> <%= prof.lastName %></a></p>
+    <p><img class="postProfPic" src="<%= prof.profPic %>" alt="profpic"><a href="profiles/<%= prof._id %>"><%= prof.firstName %> <%= prof.lastName %></a></p>
 <% }) %>
