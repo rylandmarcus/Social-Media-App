@@ -1,0 +1,8 @@
+<h1>Edit profile</h1>
+<form action="/profiles/<%= profile._id %>?_method=PUT" method="POST">
+    <input type="text" name="firstName" placeholder="first name" value="<%= profile.firstName %>">
+    <input type="text" name="lastName" placeholder="last name" value="<%= profile.lastName %>">
+    <input type="text" name="profPic" placeholder="link for prof pic" value="<%= profile.profPic %>">
+    <input type="text" name="coverPhoto" placeholder="link for cover photo" value="<%= profile.coverPhoto %>">
+    <input type="submit" value="Update Profile">
+</form>

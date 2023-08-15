@@ -68,6 +68,16 @@ router.get('/new', (req, res)=>{
 //DELETE
 
 //UPDATE
+router.put('/:id', async (req, res)=>{
+    if (!req.body.profPic){
+        req.body.profPic="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    }
+    if (!req.body.coverPhoto){
+        req.body.coverPhoto="https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg"
+    } 
+    let profile = await Profile.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
+    res.redirect(`/profiles/${req.params.id}`)
+})
 
 //CREATE
 router.post('/', async (req, res)=>{
@@ -88,6 +98,12 @@ router.post('/', async (req, res)=>{
 })
 
 //EDIT
+router.get('/:id/settings', async (req, res)=>{
+    let profile = await Profile.findById(req.params.id)
+    res.render('profiles/edit.ejs', {
+        profile: profile
+    })
+})
 
 //SHOW
 router.get('/:id', async (req, res)=>{
