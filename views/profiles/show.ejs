@@ -17,11 +17,15 @@
 <% if(posts.length==0){ %>
     <p>You have no posts</p>
     <% } %>
-<% posts.forEach(post=>{ %>
+<% posts.reverse().forEach(post=>{ %>
     <div class="profShowPost">
         <a href="/posts/<%= post._id %>" class="profShowPostLink">
             <p><%= post.body %></p>
         </a>
+        <% if (myProf){ %>
+            <a href="/posts/<%= post._id %>/edit"><button>Edit</button></a>
+            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><input type="submit" value="Delete"></form>
+        <% } %>
     </div>
 <% }) %>
 

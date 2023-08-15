@@ -3,8 +3,10 @@ const mongoose = require('../database/connection')
 const postSchema = new mongoose.Schema(
     {
         body: String,
-        likes: Number,
+        likes: {type: Number, default:0},
+        whoHasLiked: [{ref: 'Profile', type: mongoose.Schema.Types.ObjectId }],
         comments: [String],
+        commentAuthors: [{ref: 'Profile', type: mongoose.Schema.Types.ObjectId }],
         image: String,
         author: {ref: 'User', type: mongoose.Schema.Types.ObjectId }
     },

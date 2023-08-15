@@ -32,10 +32,10 @@ router.get('/seed', async (req, res)=>{
             author: users[2]._id
         },
         {
-            profPic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+            profPic: 'https://turbologo.com/articles/wp-content/uploads/2019/11/Black-Puma-Animal.png.webp',
             coverPhoto: 'https://i.pinimg.com/1200x/ce/2c/16/ce2c167254400a9f2cf349019a5fcbfd.jpg',
-            firstName: 'd first',
-            lastName: 'd last',
+            firstName: 'Cody',
+            lastName: 'Frankel',
             author: users[3]._id
         },
         {

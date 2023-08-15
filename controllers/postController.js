@@ -87,8 +87,43 @@ router.get('/new', async (req, res)=>{
 })
 
 //DELETE
+router.delete('/:id', async(req,res)=>{
+    let deleted = await Post.findByIdAndDelete(req.params.id)
+    res.redirect('/posts')
+})
 
 //UPDATE
+router.put('/:id', async (req, res)=>{
+    if (req.body.comments){
+        await Post.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, {new: true})
+        let profile = await Profile.findOne({author: req.session.userid})
+        let profId = profile._id.toHexString()
+        await Post.findByIdAndUpdate(req.params.id, {$push: {commentAuthors: profId}}, {new: true})
+        res.redirect(`/posts/${req.params.id}`)
+    } else if (req.body.like){
+        let profile = await Profile.findOne({author: req.session.userid})
+        let profId = profile._id.toHexString()
+        await Post.findByIdAndUpdate(req.params.id, {$push: {whoHasLiked: profId}}, {new: true})
+        res.redirect(`/posts/${req.params.id}`)
+    } else if (req.body.unlike){
+        let profile = await Profile.findOne({author: req.session.userid})
+        let profId = profile._id.toHexString()
+        await Post.findByIdAndUpdate(req.params.id, {$pull: {whoHasLiked: profId}}, {new: true})
+        res.redirect(`/posts/${req.params.id}`)
+    } else {
+        let post = await Post.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
+        res.redirect('/posts')
+    }
+    // if (req.body.body){
+    //     post.body = req.body.body
+    // }
+    // if (req.body.likes){
+    //     post.likes++
+    // }
+    // if (req.body.comments){
+    //     post.comments.push(req.body.comments)
+    // }
+})
 
 //CREATE
 router.post('/', async (req, res)=>{
@@ -99,20 +134,30 @@ router.post('/', async (req, res)=>{
 })
 
 //EDIT
+router.get('/:id/edit', async (req, res)=>{
+    let post = await Post.findById(req.params.id)
+    res.render('posts/edit.ejs', {
+        post: post
+    })
+})
 
 //SHOW
 router.get('/:id', async (req, res)=>{
     let post = await Post.findById(req.params.id)
     let profile = await Profile.findOne({author: post.author})
-    // let profile = profiles.find((prof)=>{
-    //     return prof.author==post.author
-    // })
-    // console.log(profiles);
-    // console.log(profile);
-    // let author = await User.findById(post.author)
+    let myPost = profile.author==req.session.userid
+    let myProfile = await Profile.findOne({author: req.session.userid})
+    await post.populate('commentAuthors')
+    let hasLikedList = []
+    post.whoHasLiked.forEach(l=>{
+        hasLikedList.push(l.toHexString())
+    })
+    let hasLiked = hasLikedList.includes(myProfile._id.toHexString())
     res.render('posts/show.ejs', {
         post: post,
-        profile: profile
+        profile: profile,
+        myPost: myPost,
+        hasLiked: hasLiked
     })
 })
 
