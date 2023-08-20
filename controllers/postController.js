@@ -106,12 +106,12 @@ router.put('/:id', async (req, res)=>{
         let profile = await Profile.findOne({author: req.session.userid})
         let profId = profile._id.toHexString()
         await Post.findByIdAndUpdate(req.params.id, {$push: {whoHasLiked: profId}}, {new: true})
-        res.redirect(`/posts/${req.params.id}`)
+        res.redirect(`/${req.body.page}`)
     } else if (req.body.unlike){
         let profile = await Profile.findOne({author: req.session.userid})
         let profId = profile._id.toHexString()
         await Post.findByIdAndUpdate(req.params.id, {$pull: {whoHasLiked: profId}}, {new: true})
-        res.redirect(`/posts/${req.params.id}`)
+        res.redirect(`/${req.body.page}`)
     } else {
         let post = await Post.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
         res.redirect('/posts')

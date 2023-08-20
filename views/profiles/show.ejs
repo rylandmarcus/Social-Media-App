@@ -41,11 +41,13 @@
             <% if (hasLiked){ %>
                 <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
                     <input type="hidden" name="unlike" value="notempty">
+                    <input type="hidden" name="page" value="profiles/<%= profile._id %>">
                     <input type="submit" value="Unlike">
                 </form>
             <% }else{ %>
                 <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
                     <input type="hidden" name="like" value="notempty">
+                    <input type="hidden" name="page" value="profiles/<%= profile._id %>">
                     <input type="submit" value="Like">
                 </form>
             <% } %>

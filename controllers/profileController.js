@@ -115,10 +115,7 @@ router.get('/:id', async (req, res)=>{
         myProf=true
     } else{
         myProf=false
-    }
-    // posts.forEach( async post=>{
-    //     await post.populate('whoHasLiked')
-    // })    
+    } 
     res.render('profiles/show.ejs', {
         profile: profile,
         posts: posts,
