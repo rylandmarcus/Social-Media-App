@@ -70,9 +70,11 @@ router.get('/', async (req, res)=>{
     if (exists){
         let posts = await Post.find({})
         let profiles = await Profile.find({})
+        let myProfile = await Profile.findOne({author: req.session.userid})
         res.render('posts/index.ejs', {
             posts: posts,
-            profiles: profiles
+            profiles: profiles,
+            myProfile: myProfile
         })
     } else {
         res.redirect('/profiles/new')

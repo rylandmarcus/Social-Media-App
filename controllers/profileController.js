@@ -110,15 +110,20 @@ router.get('/:id', async (req, res)=>{
     let profile = await Profile.findById(req.params.id)
     let posts = await Post.find({author: profile.author})
     let myProf
+    let myProfile = await Profile.findOne({author: req.session.userid})
     if (req.session.userid==profile.author){
         myProf=true
     } else{
         myProf=false
     }
+    // posts.forEach( async post=>{
+    //     await post.populate('whoHasLiked')
+    // })    
     res.render('profiles/show.ejs', {
         profile: profile,
         posts: posts,
-        myProf: myProf
+        myProf: myProf,
+        myProfile: myProfile
     })
 })
 
