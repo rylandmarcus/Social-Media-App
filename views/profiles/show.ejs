@@ -7,14 +7,23 @@
     </h2>
 </div>
 
-<% if (myProf){ %>
-    <a href="/posts/new" class="newPostLink"><button>New Post</button></a>
-    <a href="/profiles/<%= profile._id %>/settings">Account Settings</a>
-<% } %>
-
-<a href="/profiles">Back to Profiles</a>
-<a href="/posts">Back to Newsfeed</a>
+<div class="profShowButtonsContainer">
+    <% if (myProf){ %>
+        <a href="/posts/new" class="newPostLink"><button class="button">New Post</button></a>
+        <a href="/profiles/<%= profile._id %>/settings"><button class="button">Account Settings</button></a>
+    <% } %>
+    <a href="/profiles"><button class="button">Back to Profiles</button></a>
+    <a href="/posts"><button class="button">Back to Newsfeed</button></a>
+</div>
 <br>
+<div class="colorsNav">---Choose Your Favorite Color!---</div>
+<div class="colorsContainer" hidden>
+    <h1>colors</h1>
+    <input type="hidden" value="dsf">
+</div>
+<br>
+
+<div class="profShowPostsContainer">
 <% if(posts.length==0){ %>
     <p>You have no posts</p>
     <% } %>
@@ -22,11 +31,17 @@
     <div class="profShowPost">
         <a href="/posts/<%= post._id %>" class="profShowPostLink">
             <p><%= post.body %></p>
+            <button>like</button>
+            <button>comment</button>
         </a>
+        <div class="profShowPostButtons">
         <% if (myProf){ %>
             <a href="/posts/<%= post._id %>/edit"><button>Edit</button></a>
             <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><input type="submit" value="Delete"></form>
         <% } %>
+        </div>
     </div>
 <% }) %>
+</div>
+
 

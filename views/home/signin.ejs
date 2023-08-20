@@ -1,8 +1,11 @@
-<h1>
-    hi, sign in here
-</h1>
-<form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit">
-</form>
+<div class="loginPage">
+    <h1>   
+        Please Enter Your Username and Password Below to Login!
+    </h1>
+    <form action="/login" method="POST" class="loginForm">
+        <input class="loginFormInput" type="text" name="username" placeholder="Username" required>
+        <input class="loginFormInput" type="password" name="password" placeholder="Password" required>
+        <input class="loginFormInput" type="submit" value="Login">
+    </form>
+    <p>Don't have an account? <a href="/signup">Sign Up here!</a></p>
+</div>

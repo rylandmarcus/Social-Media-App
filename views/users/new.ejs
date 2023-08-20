@@ -1,5 +1,9 @@
-<form action="/users" method="POST">
-    <input type="text" name="username" placeholder="Enter a Username">
-    <input type="password" name="password" placeholder="Enter a Password">
-    <button type="submit">Sign Up!</button>
-</form>
+<div class="signUpPage">
+    <h1>Please Enter A Username and Password to Sign Up</h1>
+    <form class="signUpForm" action="/users" method="POST">
+        <input class="signUpFormInput" type="text" name="username" placeholder="Enter a Username" required>
+        <input class="signUpFormInput" type="password" name="password" placeholder="Enter a Password" required>
+        <button class="signUpFormInput" type="submit">Sign Up!</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here!</a></p>
+</div>
