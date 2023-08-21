@@ -54,3 +54,25 @@ if (document.querySelector('.colorsNav')){
     })
 }
 
+if (document.querySelector('#searchBar')){
+    document.querySelector('#searchBar').addEventListener('submit', (e)=>{
+        e.preventDefault()
+        let value = document.querySelector('#searchText').value.toLowerCase()
+        if (!value){
+            let profs = document.querySelectorAll('.profIndexItem')
+            profs.forEach(prof=>{
+                prof.hidden = false
+            })
+            return
+        } else {
+            let profs = document.querySelectorAll('.name')
+            profs.forEach(prof=>{
+                prof.parentElement.hidden=true
+                if (prof.innerText.includes(value)){
+                    prof.parentElement.hidden=false
+                } 
+            })
+            return
+        }
+    })
+}

@@ -2,6 +2,15 @@
 <a href="/logout">Log out</a>
 <a href="/profiles/<%= myProfile._id %>">my profile</a>
 <a href="/posts">posts</a>
-<% profiles.forEach(prof=>{ %>
-    <p><img class="postProfPic" src="<%= prof.profPic %>" alt="profpic"><a href="profiles/<%= prof._id %>"><%= prof.firstName %> <%= prof.lastName %></a></p>
-<% }) %>
+<form id="searchBar">
+    <input type="text" id="searchText">
+    <input type="submit" value="Search">
+</form>
+<div id="profIndexDiv">
+    <% profiles.forEach(prof=>{ %>
+        <div class="profIndexItem">
+            <p hidden class="name"><%= prof.firstName.toLowerCase() + ' ' + prof.lastName.toLowerCase() %></p>
+            <img class="postProfPic" src="<%= prof.profPic %>" alt="profpic"><a href="profiles/<%= prof._id %>"><%= prof.firstName + ' ' + prof.lastName %></a>
+        </div>
+    <% }) %>
+</div>
