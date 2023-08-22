@@ -1,8 +1,9 @@
-<h1>new profile</h1>
+<%- include('../partials/heading.ejs') %>
+<h1>Make a New Profile</h1>
 <form action="/profiles" method="POST">
     <input type="text" name="firstName" placeholder="first name">
     <input type="text" name="lastName" placeholder="last name">
     <input type="text" name="profPic" placeholder="link for prof pic">
     <input type="text" name="coverPhoto" placeholder="link for cover photo">
-    <input type="submit">
+    <input type="submit" value="Make New Profile" class="button">
 </form>

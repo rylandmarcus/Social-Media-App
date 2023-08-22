@@ -85,7 +85,10 @@ router.get('/', async (req, res)=>{
 
 //NEW
 router.get('/new', async (req, res)=>{
-    res.render('posts/new.ejs')
+    let myProfile = await Profile.findOne({author: req.session.userid})
+    res.render('posts/new.ejs', {
+        myProfile: myProfile
+    })
 })
 
 //DELETE
@@ -138,8 +141,10 @@ router.post('/', async (req, res)=>{
 //EDIT
 router.get('/:id/edit', async (req, res)=>{
     let post = await Post.findById(req.params.id)
+    let myProfile = await Profile.findOne({author: req.session.userid})
     res.render('posts/edit.ejs', {
-        post: post
+        post: post, 
+        myProfile: myProfile
     })
 })
 
@@ -159,7 +164,8 @@ router.get('/:id', async (req, res)=>{
         post: post,
         profile: profile,
         myPost: myPost,
-        hasLiked: hasLiked
+        hasLiked: hasLiked,
+        myProfile: myProfile
     })
 })
 

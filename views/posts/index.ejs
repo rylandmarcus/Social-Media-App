@@ -1,7 +1,6 @@
-<h1>Welcome to Your Newsfeed</h1>
-<a href="/profiles">To Profiles</a>
-<% let poop = 'yo' %>
+<%- include('../partials/heading.ejs') %>
 <%- include("../partials/navBar.ejs", {id: myProfile._id}) %>
+<h1>Newsfeed!</h1>
 <div class="postsdiv">
     <% posts.reverse().forEach(post=>{ %>
             <% let writer = profiles.find(prof=>{
@@ -9,10 +8,10 @@
             }) %>
             <div class="postcontainer">
                 <p class="profheader">
-                    <a href="/profiles/<%=writer._id%>">
+                    <a href="/profiles/<%=writer._id%>" class="postIndexProfile">
                         <img class="postProfPic" src="<%=writer.profPic%>" alt="<%= writer.firstName %> <%= writer.lastName%>"><%= writer.firstName %> <%= writer.lastName%>
                     </a>
-                    :
+                    
                 </p>
                 <a href="/posts/<%=post._id%>" class="postLink">
                     <div class="post">

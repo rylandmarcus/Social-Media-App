@@ -1,11 +1,11 @@
-<h1>Post Show!</h1>
-<a href="/posts">Back to Newsfeed</a>
-<a href="/profiles">Back to Profiles</a>
-<div>
-    <img src="<%= profile.profPic %>" alt="profPic" style="height: 50px; width: 50px;">
+<%- include('../partials/heading.ejs') %>
+<%- include("../partials/navBar.ejs", {id: myProfile._id}) %>
+<div class="postShowDiv">
+
+<div class="postShowProf">
+    <img src="<%= profile.profPic %>" alt="profPic" style="height: 100px; width: 100px;">
     <p><%= profile.firstName %> <%= profile.lastName %></p>
 </div>
-<br>
 <br>
 <br>
 <div>
@@ -28,8 +28,11 @@
         </form>
     <% } %>
 </div>
+</div>
+
 <br>
 <br>
+<h2>Comments:</h2>
 <% post.comments.forEach((comment, i)=>{ %>
     <p><%= post.commentAuthors[i].firstName %>: <%= comment %></p>
 <% }) %>
@@ -40,12 +43,11 @@
 <br>
 <br>
 <br>
-<br>
 <% if (myPost){ %>
-    <div>
-        <a href="/posts/<%= post._id %>/edit"><button>Edit Post</button></a>
+    <div class="modifyButtonsDiv">
+        <a href="/posts/<%= post._id %>/edit"><button class="button">Edit Post</button></a>
         <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete">
+            <input class="button" type="submit" value="Delete">
         </form>
     </div>
 <% } %>

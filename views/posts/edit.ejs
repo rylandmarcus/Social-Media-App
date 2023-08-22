@@ -1,6 +1,9 @@
+<%- include('../partials/heading.ejs') %>
+<%- include("../partials/navBar.ejs", {id: myProfile._id}) %>
 <h1>Edit Post!</h1>
 
 <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
-    <input type="text" name="body" placeholder="type what you want to post!" class="postbox" value="<%= post.body %>">
-    <input type="submit" value="Update Post">
+    <textarea rows="5" cols="60" name="body" placeholder="type what you want to post!"><%= post.body %></textarea>
+
+    <input type="submit" value="Update Post!" class="button">
 </form>
