@@ -1,16 +1,17 @@
-<h1>profiles index</h1>
-<a href="/logout">Log out</a>
-<a href="/profiles/<%= myProfile._id %>">my profile</a>
-<a href="/posts">posts</a>
+<h1>Search For A Profile!</h1>
+<%- include('../partials/navBar', {id: myProfile._id}) %>
 <form id="searchBar">
-    <input type="text" id="searchText">
-    <input type="submit" value="Search">
+    <input class="searchForm" type="text" id="searchText" placeholder="name of profile you are looking for">
+    <input class="searchForm" type="submit" value="Search" id="searchButton">
 </form>
 <div id="profIndexDiv">
     <% profiles.forEach(prof=>{ %>
         <div class="profIndexItem">
             <p hidden class="name"><%= prof.firstName.toLowerCase() + ' ' + prof.lastName.toLowerCase() %></p>
-            <img class="postProfPic" src="<%= prof.profPic %>" alt="profpic"><a href="profiles/<%= prof._id %>"><%= prof.firstName + ' ' + prof.lastName %></a>
+            <a class="profIndexA" href="profiles/<%= prof._id %>">
+                <img class="profIndexPic" src="<%= prof.profPic %>" alt="profpic">
+                <%= prof.firstName + ' ' + prof.lastName %>
+            </a>
         </div>
     <% }) %>
 </div>

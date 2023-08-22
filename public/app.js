@@ -66,7 +66,9 @@ if (document.querySelector('#searchBar')){
             return
         } else {
             let profs = document.querySelectorAll('.name')
-            profs.forEach(prof=>{
+            console.log('listen');
+            console.log(profs);
+            profs.forEach(prof=>{                
                 prof.parentElement.hidden=true
                 if (prof.innerText.includes(value)){
                     prof.parentElement.hidden=false

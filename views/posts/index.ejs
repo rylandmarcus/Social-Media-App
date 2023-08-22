@@ -1,5 +1,7 @@
 <h1>Welcome to Your Newsfeed</h1>
 <a href="/profiles">To Profiles</a>
+<% let poop = 'yo' %>
+<%- include("../partials/navBar.ejs", {id: myProfile._id}) %>
 <div class="postsdiv">
     <% posts.reverse().forEach(post=>{ %>
             <% let writer = profiles.find(prof=>{

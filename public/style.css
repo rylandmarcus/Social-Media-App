@@ -206,3 +206,53 @@ body{
     margin: 30px;
     font-size: larger;
 }
+
+/* Profiles Index Page */
+#searchBar{
+    margin: 30px;
+}
+
+.searchForm{
+    font-size: 20px;
+}
+
+#searchText{
+    width: 400px;
+    height: 50px;
+}
+
+.profIndexItem{
+    margin: 15px;
+}
+
+.profIndexPic{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}
+
+.profIndexA{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 40px;
+    border: black solid 2px;
+    background-color: lightblue;
+    width: 500px;
+}
+
+#searchButton{
+        background-color: #054ce8;
+        color: white;
+        transition-duration: 0.2s;
+        font-size: 15px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      
+      #searchButton:hover {
+        background-color: lightblue; /* Green */
+        color: white;
+      }
